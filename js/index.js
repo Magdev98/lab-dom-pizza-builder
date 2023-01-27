@@ -117,10 +117,52 @@ function renderButtons() {
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
-  // I didn't manage to get the logic and what to code... I don't know how to call the all elements...
-  /* const panelPrice = document.querySelector('.panel price')
-      panelPrice.innerHTML = '' - ?!
-  */
+  const liPep = document.querySelector('.panel.price > ul > li:nth-child(1)')
+  const liMushroom = document.querySelector('.panel.price > ul > li:nth-child(2)')
+  const liGreenPepper = document.querySelector('.panel.price > ul > li:nth-child(3)')
+  const liSauce = document.querySelector('.panel.price > ul > li:nth-child(4)')
+  const liCrust = document.querySelector('.panel.price > ul > li:nth-child(5)')
+
+  let totalPrice = basePrice
+  const displayPrice = document.querySelector('strong')
+
+  if(state.pepperoni) {
+    liPep.style.display = 'block';
+    totalPrice += ingredients.pepperoni.price;
+  } else {
+    liPep.style.display = 'none';
+  }
+
+  if(state.mushrooms) {
+    liMushroom .style.display = 'block';
+    totalPrice += ingredients.mushrooms.price;
+  } else {
+    liMushroom .style.display = 'none';
+  }
+
+  if(state.greenPeppers) {
+    liGreenPepper.style.display = 'block';
+    totalPrice += ingredients.greenPeppers.price;
+  } else {
+    liGreenPepper.style.display = 'none';
+  }
+
+  if(state.whiteSauce) {
+    liSauce.style.display = 'block';
+    totalPrice += ingredients.whiteSauce.price;
+  } else {
+    liSauce.style.display = 'none';
+  }
+
+  if(state.glutenFreeCrust) {
+    liCrust.style.display = 'block';
+    totalPrice += ingredients.glutenFreeCrust.price;
+  } else {
+    liCrust.style.display = 'none';
+  }
+
+  displayPrice.textContent = `$${totalPrice}`
+
 }
 
 renderEverything();
